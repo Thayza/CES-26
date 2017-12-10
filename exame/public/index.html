@@ -1,0 +1,64 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    <script type="text/ng-template" id="view/inicio.html">
+      <h1 align="center"> Exame CES26 </h1>
+      <p align="center"> Aluna: Thayza Tabisz</p>
+      <p align="center"> Single Application Page com Angular4 e Node.js
+	  <p align="center"> Essa ferramenta permite o cadastro e pesquisa de nomes</p>
+    </script>
+    
+    <script type="text/ng-template" id="view/cadastro.html">
+      <h1 align ="center">Cadastrar</h1>
+      <div align = "center">
+			<div class="alert alert-success">
+			  <p>{{message}}</p>
+			</div>
+		  
+		  <input type="text" name="name" ng-model="cadastro" placeholder = "Insira nome do cadastro"/>
+		  <button ng-click="adicionarCadastro(cadastro)" class="btn btn-primary">Cadastrar</button> 
+      </div>
+      
+    </script>
+    <script type="text/ng-template" id="view/pesquisa.html">
+      <div align = "center">
+              <h1>Cadastros:</h1>
+                  
+       
+	   
+	   <div class="well" style="margin-top: 30px; width: 200px; overflow: hidden;">
+		<form class="form-search"> 
+			<div class="input-append">
+			  <input type="text" ng-model="search" class="search-query" style="width: 80px">
+			</div>
+			<ul class="nav nav-pills nav-stacked">
+			  <li ng-animate="'animate'" ng-repeat="cadastro in cadastros | filter:search">
+				<p> {{cadastro}} </p>
+			  </li> 
+		  </ul>
+		</form>
+	  </div>
+	  
+	  <p>{{message}}</p>
+	  
+	  </div>
+	   
+    </script>
+    
+	<a href="#/" class="btn btn-lg btn-primary btn-block" role="button">Inicio</a>
+	<a href="#/cadastro" class="btn btn-lg btn-primary btn-block" role="button">Cadastro</a>
+	<a href="#/pesquisa" class="btn btn-lg btn-primary btn-block" role="button">Pesquisa</a>
+	
+    <div ng-view></div>
+
+
+    <script src="core.js"></script>
+  </body>
+</html>
